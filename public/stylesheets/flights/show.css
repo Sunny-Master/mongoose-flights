@@ -54,3 +54,17 @@ section div:nth-child(even) {
   grid-column: 2 / 3;
   margin-bottom: 24px;
 }
+
+.edit-button {
+  margin: 20px;
+  border: none;
+  background-color: #b8c0c2;
+  padding: 4px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #424748;
+}
+
+.edit-button:hover {
+  background-color: white;
+}

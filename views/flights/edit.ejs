@@ -1,0 +1,36 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/flights/edit.css" />
+<%- include('../partials/nav') %>
+
+<main>
+  <h1><%= title %></h1>
+  <form 
+    id="new-form" 
+    action="/flights/<%= flight._id %>?_method=PUT" 
+    method="POST"
+  >
+  <label for="airline-select">Airline:</label>
+  <select name="airline" id="airline-select">
+    <option selected disabled value="<%= flight.airline %>"><%= flight.airline %></option>
+    <option value="American">American</option>
+    <option value="Southwest">Southwest</option>
+    <option value="United">United</option>
+  </select>
+  <label for="airport-select">Airport:</label>
+  <select name="airport" id="airport-select">
+    <option selected disabled value="<%= flight.airport %>"><%= flight.airport %></option>
+    <option value="AUS">AUS</option>
+    <option value="DFW">DFW</option>
+    <option value="DEN">DEN</option>
+    <option value="LAX">LAX</option>
+    <option value="SAN">SAN</option>
+  </select>
+  <label for="flight-num">Flight No:</label>
+  <input type="number" name="flightNo" id="flight-num" value="<%= flight.flightNo %>">
+  <label for="date-time">Departs:</label>
+  <input type="datetime-local" name="departs" id="date-time" value="<%= `${flight.departs.toISOString().slice(0, 11)}${flight.departs.toLocaleTimeString('it-IT')}` %>">
+    <button type="submit">Save Flight</button>
+  </form>
+</main>
+
+<%- include("../partials/footer") %>
