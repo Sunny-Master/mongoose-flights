@@ -82,6 +82,38 @@ async function update(req, res) {
   }
 }
 
+async function createTicket(req, res) {
+  try {
+    // find the flight by id
+    const flight = await Flight.findById(req.params.flightId)
+    // save the ticket by pushing to flight.tickets array
+    flight.tickets.push(req.body)
+    // save the flight object in database
+    await flight.save()
+    // render the tickets on the show page
+    res.redirect(`/flights/${req.params.flightId}`)
+  } catch (error) {
+    console.log(error)
+    res.redirect(`/flights`)
+  }
+}
+
+async function deleteTicket(req, res) {
+  try {
+    // find the flight by id
+    const flight = await Flight.findById(req.params.flightId)
+    // find the ticket by flight.tickets.id[._id] and delete
+    flight.tickets.id(req.params.ticketId).deleteOne()
+    // save flight object to database
+    await flight.save()
+    // render the updated flight details page
+    res.redirect(`/flights/${flight._id}`)
+  } catch (error) {
+    console.log(error)
+    res.redirect(`/flights`)
+  }
+}
+
 export {
   newFlight as new,
   create,
@@ -90,4 +122,6 @@ export {
   deleteFlight as delete,
   edit,
   update,
+  createTicket,
+  deleteTicket,
 }

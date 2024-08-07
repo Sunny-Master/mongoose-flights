@@ -15,6 +15,47 @@
     <div><%= flight.departs %></div>
   </section>
   <a class="edit-button" href="/flights/<%= flight._id %>/edit">Edit Flight</a>
+  <h2>Tickets</h2>
+  <% if (flight.tickets.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Seat</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.tickets.forEach((ticket) => { %>
+          <tr>
+            <td><%= ticket.seat %></td>
+            <td><%= `$${ticket.price}` %></td>
+            <td>
+              <form action="/flights/<%= flight._id %>/<%= ticket._id %>?_method=DELETE" 
+                method="post">
+                <button type="submit">❌</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <h3>No tickets available for this flight. We are fully booked!</h3>
+  <% } %>
+  <form 
+    id="add-ticket-form" 
+    action="/flights/<%= flight._id %>/tickets" 
+    method="post"
+  >
+    <label for="add-seat">Seat: </label>
+    <input type="text" name="seat" id="add-seat" required pattern="[A-F][1-9]\d?">
+    <label for="add-price">Price: </label>
+    <input type="number" name="price" required id="add-price">
+    <button type="submit">Add Ticket</button>
+  </form>
+
+
 </main>
   
 <%- include('../partials/footer') %>
