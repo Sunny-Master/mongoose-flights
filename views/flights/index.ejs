@@ -9,12 +9,15 @@
       <tr>
         <th>Airline</th>
         <th>Airport</th>
-        <th>Departure</th>
+        <th>
+          <a href="/flights?sort=ascend">Departure</a>
+        </th>
         <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
+      <% sortFlights ?  flights.sort((a, b) => a.departs - b.departs) : flights %>
       <% flights.forEach((flight) => { %>
       <tr>
         <td><%= flight.airline %></td>

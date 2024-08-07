@@ -22,9 +22,11 @@ async function create(req, res) {
 async function index(req, res) {
   try {
     const flights = await Flight.find({})
+    const sortFlights = !!req.query['sort']
     res.render('flights/index', {
       title: 'All Flights',
-      flights
+      flights,
+      sortFlights
     })
   } catch (error) {
     console.log(error)
