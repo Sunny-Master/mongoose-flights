@@ -28,7 +28,7 @@
   <label for="flight-num">Flight No:</label>
   <input type="number" name="flightNo" id="flight-num" value="<%= flight.flightNo %>">
   <label for="date-time">Departs:</label>
-  <input type="datetime-local" name="departs" id="date-time" value="<%= `${flight.departs.toISOString().slice(0, 11)}${flight.departs.toLocaleTimeString('it-IT')}` %>">
+  <input type="datetime-local" name="departs" id="date-time" value="<%= departsDate %>">
     <button type="submit">Save Flight</button>
   </form>
 </main>

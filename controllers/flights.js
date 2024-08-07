@@ -1,8 +1,11 @@
 import { Flight } from "../models/flight.js"
 
 function newFlight(req, res) {
+  const departsDate = new Flight().departs
+  const defaultDate = `${departsDate.toISOString().slice(0, 11)}${departsDate.toLocaleTimeString('it-IT')}`
   res.render('flights/new', {
-    title: 'Add Flight'
+    title: 'Add Flight',
+    defaultDate
   })
 }
 
@@ -55,9 +58,11 @@ async function deleteFlight(req, res) {
 async function edit(req, res) {
   try {
     const flight = await Flight.findById(req.params.flightId)
+    const departsDate = `${flight.departs.toISOString().slice(0, 11)}${flight.departs.toLocaleTimeString('it-IT')}`
     res.render('flights/edit', {
       title: 'Edit Flight',
-      flight
+      flight,
+      departsDate
     })
   } catch (error) {
     console.log(error)
