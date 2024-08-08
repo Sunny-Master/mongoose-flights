@@ -8,6 +8,17 @@ async function newMeal(req, res){
   })
 }
 
+async function create(req, res) {
+  try {
+    const meal = await Meal.create(req.body)
+    res.redirect('/meals/new')
+  } catch (error) {
+    console.log(error)
+    res.redirect('/')
+  }
+}
+
 export {
   newMeal as new,
+  create,
 }
