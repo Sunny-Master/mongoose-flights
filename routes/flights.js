@@ -27,6 +27,9 @@ router.post('/:flightId/meals', flightsCtrl.addMeal)
 // DELETE /flights/:flightId
 router.delete('/:flightId', flightsCtrl.delete)
 
+// DELETE /flights/:flightId/remove/:mealId
+router.delete('/:flightId/remove-meal', flightsCtrl.removeMeal)
+
 // DELETE /flights/:flightId/:ticketId
 router.delete('/:flightId/:ticketId', flightsCtrl.deleteTicket)
 

@@ -133,6 +133,17 @@ async function addMeal(req, res) {
   }
 }
 
+async function removeMeal(req, res) {
+  try {
+    // find flight by id and update the meals by pulling out the meal._id from meals
+    await Flight.findByIdAndUpdate(req.params.flightId, {$pull: {'meals': req.body.meal}}, {new: true})
+    res.redirect(`/flights/${req.params.flightId}`)
+  } catch (error) {
+    console.log(error)
+    res.redirect('/flights')
+  }
+}
+
 export {
   newFlight as new,
   create,
@@ -144,4 +155,5 @@ export {
   createTicket,
   deleteTicket,
   addMeal,
+  removeMeal,
 }

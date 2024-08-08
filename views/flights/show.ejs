@@ -18,7 +18,11 @@
     <ul>
       <% flight.meals.forEach(meal => { %>
         <li>
-          <%= meal.name %>
+          <form action="/flights/<%= flight._id %>/remove-meal?_method=DELETE" method="POST">
+            <%= meal.name %>
+            <input type="hidden" name="meal" value="<%= meal._id %>">
+            <button type="submit" class="remove-button">❌</button>
+          </form>
         </li>
       <% }) %>
     </ul>
