@@ -12,15 +12,13 @@
     </select>
   </p>
   <form id="add-meal-form" action="/meals" method="POST">
-    <label for="name-input">Meal Name/Type:</label>
-    <input 
-    type="text" 
-    name="name" 
-    id="name-input"
-    
-    >
+    <label for="name-input">Meal Name:</label>
+    <input type="text" name="name" id="name-input">
     <button type="submit">Add Meal</button>
   </form>
+  <% if (mealExists) { %>
+    <h2>This Meal-Name already exists. Please add other meals!</h2>
+  <% } %>
 </main>
 
 <%- include('../partials/footer') %>
