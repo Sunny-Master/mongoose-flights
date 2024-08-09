@@ -1,8 +1,11 @@
 form {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 16px;
-  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+  max-width: 312px;
+  flex-wrap: wrap;
+  justify-content: right;
+  align-items: center;
 }
 
 form * {
@@ -11,9 +14,19 @@ form * {
   font-size: 20px;
 }
 
-form > button {
+button {
+  border-radius: 4px;
+  border: none;
+  background-color: #b8c0c2;
+  padding: 4px;
+  text-decoration: none;
   font-size: 16px;
-  width: 160px;
-  grid-column: 2 / 3;
-  margin-bottom: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #424748;
+}
+
+button:hover {
+  background-color: #424748;
+  color: white;
 }

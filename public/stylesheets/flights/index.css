@@ -23,7 +23,7 @@ table td {
   background-color: #b8c0c2;
   padding: 4px;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   color: #424748;
 }
 
@@ -37,4 +37,8 @@ table td {
 
 button {
   cursor: pointer;
+}
+
+.late {
+  color: red;
 }

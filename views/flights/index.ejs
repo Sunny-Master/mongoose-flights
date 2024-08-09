@@ -7,10 +7,10 @@
   <table id="list">
     <thead>
       <tr>
-        <th>Airline</th>
-        <th>Airport</th>
+        <th>AIRLINE</th>
+        <th>AIRPORT</th>
         <th>
-          <a href="/flights?sort=ascend">Departure</a>
+          <a href="/flights?sort=ascend">DEPARTURE</a>
         </th>
         <th></th>
         <th></th>
@@ -19,12 +19,14 @@
     <tbody>
       <% sortFlights ?  flights.sort((a, b) => a.departs - b.departs) : flights %>
       <% flights.forEach((flight) => { %>
-      <tr>
+      <tr
+        class=<%= flight.departs < new Date() ? 'late' : '' %>
+      >
         <td><%= flight.airline %></td>
         <td><%= flight.airport %></td>
         <td><%= flight.departs.toDateString() %></td>
         <td>
-          <a href="/flights/<%= flight._id %>">DETAILS</a>
+          <a href="/flights/<%= flight._id %>">Details</a>
         </td>
         <td>
           <form action="/flights/<%= flight._id %>?_method=DELETE" 
